@@ -1,0 +1,12 @@
+%h1 Hey!
+
+%h2 Change language
+=link_to "english", "/lang/en"
+=link_to "spanish", "/lang/es"
+=link_to "polish", "/lang/pl"
+
+%h2 Examples
+=t :hello, {:name => "Dario", :surname => "Cravero"}
+=t "setup.something"
+=(t "setup.ssomething")[0]
+=t :something, :scope => [:setup]

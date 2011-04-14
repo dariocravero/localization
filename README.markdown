@@ -1,32 +1,34 @@
-= Localization example with Padrino+I18N
+# Localization example with Padrino+I18N
 
 app/views/demo/index.haml
-%h1 Hey!
-=t :hello, {:name => "Dario", :surname => "Cravero"}
-=t "setup.something"
-=(t "setup.ssomething")[0]
-=t :something, :scope => [:setup]
-=l Time.now
+  %h1 Hey!
+  =t :hello, {:name => "Dario", :surname => "Cravero"}
+  =t "setup.something"
+  =(t "setup.ssomething")[0]
+  =t :something, :scope => [:setup]
+
+If you have activerecord support (not here) you can also translate dates! :)
+
+  =l Time.now
 
 app/locale/en.yml
-en:
-  hello: "Hello, %{name} %{surname} you've won something."
+  en:
+    hello: "Hello, %{name} %{surname} you've won something."
 
 app/locale/setup/en.yml
-en:
-  setup:
-    something: SSSS
-    ssomething: [A, B]
+  en:
+    setup:
+      something: SSSS
+      ssomething: [A, B]
 
-app/controllers/demo.rb
-Test.controllers :demo do
-  get :index do
-    @category = "one"
-    render "demo/index"
-  end
+app/controllers/localize.rb
+  Localization.controllers :localize do
+    get :index, :map => "/" do
+      render "localize/index"
+    end
 
-  get :lang, :with => :l do
-    I18n.locale = params[:l]
-    redirect "/demo"
+    get :lang, :map => "/lang/:lang" do
+      I18n.locale = params[:lang]
+      redirect "/"
+    end
   end
-end

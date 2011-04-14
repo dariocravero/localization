@@ -1,0 +1,2 @@
+pl:
+  hello: "Czesc, %{name} %{surname} wygrales cos!"
