@@ -23,13 +23,13 @@ app/locale/setup/en.yml
 
 app/controllers/localize.rb
 
-  Localization.controllers :localize do
-    get :index, :map => "/" do
-      render "localize/index"
-    end
+    Localization.controllers :localize do
+      get :index, :map => "/" do
+        render "localize/index"
+      end
 
-    get :lang, :map => "/lang/:lang" do
-      I18n.locale = params[:lang]
-      redirect "/"
+      get :lang, :map => "/lang/:lang" do
+        I18n.locale = params[:lang]
+        redirect "/"
+      end
     end
-  end
