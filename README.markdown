@@ -22,6 +22,7 @@ app/locale/setup/en.yml
       ssomething: [A, B]
 
 app/controllers/localize.rb
+
   Localization.controllers :localize do
     get :index, :map => "/" do
       render "localize/index"
